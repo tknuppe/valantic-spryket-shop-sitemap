@@ -17,9 +17,11 @@ class GenerateController extends AbstractController
      */
     public function generateAction(): void
     {
-        $locale = $this->getFactory()->getLocaleFacade()->getCurrentLocale()->getLocaleName();
-        $sitemapTransfer = (new SitemapTransfer())->fromArray(['locale' => explode('_', $locale)[0]]);
+        $locales = $this->getFactory()->getConfig()->getAvailableLocale();
 
-        $this->getFacade()->createSitemapXml($sitemapTransfer);
+        foreach ($locales as $locale) {
+            $sitemapTransfer = (new SitemapTransfer())->fromArray(['locale' => explode('_', $locale)[0]]);
+            $this->getFacade()->createSitemapXml($sitemapTransfer);
+        }
     }
 }
