@@ -65,10 +65,10 @@ class SitemapHandler implements SitemapHandlerInterface
      *
      * @return \Generated\Shared\Transfer\SitemapResponseTransfer
      */
-    public function getSitemapIndexContent(SitemapTransfer $transfer): SitemapResponseTransfer
+    public function getSitemapIndexContent(SitemapTransfer $sitemapTransfer): SitemapResponseTransfer
     {
-        $segments = explode('_', str_replace(static::DOT_XML_EXTENSION, '', $transfer->getFile()));
-        $locale = explode('_', $transfer->getLocale())[0];
+        $segments = explode('_', str_replace(static::DOT_XML_EXTENSION, '', $sitemapTransfer->getFile()));
+        $locale = explode('_', $sitemapTransfer->getLocale())[0];
         if ($segments[0] !== static::SITEMAP_FILE_NAME) {
             $segments[0] = static::SITEMAP_FILE_NAME;
         }
@@ -86,7 +86,7 @@ class SitemapHandler implements SitemapHandlerInterface
         $filePointer = $this->config->getSitemapPath() . "/$locale/$filename";
 
         if (!file_exists($filePointer)) {
-            $this->createSitemapXml($transfer);
+            $this->createSitemapXml($sitemapTransfer);
         }
 
         return (new SitemapResponseTransfer())->fromArray(
