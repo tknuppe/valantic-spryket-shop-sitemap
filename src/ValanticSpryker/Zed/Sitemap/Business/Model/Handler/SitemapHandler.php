@@ -39,7 +39,7 @@ class SitemapHandler implements SitemapHandlerInterface
     }
 
     /**
-     * @param \Generated\Shared\Transfer\SitemapTransfer $transfer
+     * @param \Generated\Shared\Transfer\SitemapTransfer $sitemapTransfer
      *
      * @return void
      */
@@ -61,7 +61,7 @@ class SitemapHandler implements SitemapHandlerInterface
     }
 
     /**
-     * @param \Generated\Shared\Transfer\SitemapTransfer $transfer
+     * @param \Generated\Shared\Transfer\SitemapTransfer $sitemapTransfer
      *
      * @return \Generated\Shared\Transfer\SitemapResponseTransfer
      */
