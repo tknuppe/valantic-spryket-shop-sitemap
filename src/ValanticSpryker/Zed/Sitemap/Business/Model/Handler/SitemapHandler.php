@@ -43,9 +43,9 @@ class SitemapHandler implements SitemapHandlerInterface
      *
      * @return void
      */
-    public function createSitemapXml(SitemapTransfer $transfer): void
+    public function createSitemapXml(SitemapTransfer $sitemapTransfer): void
     {
-        $locale = $transfer->getLocale();
+        $locale = $sitemapTransfer->getLocale();
         $urlList = $this->queryContainer->findVisibleUrls($locale, false);
         $this->paginateResultSet($urlList, $locale);
     }
